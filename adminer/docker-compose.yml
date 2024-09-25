@@ -1,0 +1,17 @@
+version: "3"
+services:
+  adminer_mysql:
+    image: adminer
+    restart: always
+    ports:
+      - 8081:8080 # Running Adminer for MySQL on a different port
+    environment:
+      ADMINER_DEFAULT_SERVER: db # Change this to the actual MySQL service name
+
+  adminer_postgres:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080 # Running Adminer for PostgreSQL on a different port
+    environment:
+      ADMINER_DEFAULT_SERVER: db # Change this to the actual PostgreSQL service name
