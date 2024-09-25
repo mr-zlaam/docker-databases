@@ -1,0 +1,20 @@
+# a docker compose file for mysql and adminer with a volume for the database and setup for environment variables
+
+services:
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: hellozlaam
+      MYSQL_DATABASE: zlaamDB
+      MYSQL_USER: zlaam
+      MYSQL_PASSWORD: hellozlaam
+    ports:
+      - 3306:3306 # make sure you don't have another container running on 3306
+    volumes:
+      - ./mysql:/var/lib/mysql
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
