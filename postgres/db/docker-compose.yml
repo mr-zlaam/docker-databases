@@ -1,21 +1,21 @@
 services:
   db:
-    image: postgres
+    image: postgres:18
     restart: always
-    volumes:
-      - ./data/db:/var/lib/postgresql/data
     ports:
-      - 5432:5432 # make sure you don't have another container running on 5432
-
+      - "5432:5432"
     environment:
-      - POSTGRES_DB=zlaamDB
-      - POSTGRES_USER=zlaam
-      - POSTGRES_PASSWORD=hellozlaam
-
+      POSTGRES_DB: defaultdb
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: rootpassword
+      PGDATA: /var/lib/postgresql/18/docker
+    volumes:
+      - ./data/db:/var/lib/postgresql
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
+
 # Here is your url string in order to connect with database name postgresSQL.
 # *************postgresql://zlaam:hellozlaam@localhost:5432/zlaamDB**************
